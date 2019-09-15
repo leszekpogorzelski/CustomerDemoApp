@@ -23,10 +23,10 @@ public class DbService {
     }
 
     public Customer saveCustomer(final Customer customer) {
-        return repository.save(customer;
+        return repository.save(customer);
     }
 
-    public void deleteTask(Long id) {
+    public void deleteCustomer(Long id) {
         repository.deleteById(id);
     }
 }

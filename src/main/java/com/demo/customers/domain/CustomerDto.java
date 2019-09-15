@@ -17,6 +17,6 @@ public class CustomerDto {
     private String email;
     private String street;
     private String homeNumber;
-    private String postalCode;
+    private String postal;
     private String city;
 }

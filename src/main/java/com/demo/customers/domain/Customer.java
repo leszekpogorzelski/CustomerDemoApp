@@ -15,41 +15,41 @@ import javax.validation.constraints.NotNull;
 public class Customer {
 
     @Id
-    @NotNull
+    //@NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true)
+    @Column(name = "ID", unique = true)
     private long id;
 
-    @NotNull
-    @Column(name = "PERSONAL_ID", unique = true)
+    //@NotNull
+    @Column(name = "PERSONALID", unique = true)
     private String personalIdNumber;
 
-    @NotNull
-    @Column(name = "FIRST_NAME")
+    //@NotNull
+    @Column(name = "FIRSTNAME")
     private String firstName;
 
-    @NotNull
-    @Column(name = "LAST_NAME")
+    //@NotNull
+    @Column(name = "LASTNAME")
     private String lastName;
 
-    @NotNull
-    @Email
+    //@NotNull
+    //@Email
     @Column(name = "EMAIL")
     private String email;
 
-    @NotNull
+    //@NotNull
     @Column(name = "STREET")
     private String street;
 
-    @NotNull
-    @Column(name = "HOME_NUMBER")
+    //@NotNull
+    @Column(name = "HOMENUMBER")
     private String homeNumber;
 
-    @NotNull
-    @Column(name = "POSTAL_CODE")
-    private String postalCode;
+    //@NotNull
+    @Column(name = "POSTALCODE")
+    private String postal;
 
-    @NotNull
+    //@NotNull
     @Column(name = "CITY")
     private String city;
 
