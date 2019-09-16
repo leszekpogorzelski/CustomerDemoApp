@@ -40,6 +40,7 @@ public class Customer {
     private String lastName;
 
     @NotNull
+    @Pattern(regexp = ".+@.+\\..+[a-z]+")
     @Email
     @Column(name = "EMAIL")
     private String email;

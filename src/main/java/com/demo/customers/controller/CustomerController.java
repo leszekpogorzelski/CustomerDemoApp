@@ -3,6 +3,7 @@ package com.demo.customers.controller;
 import com.demo.customers.domain.CustomerDto;
 import com.demo.customers.mapper.CustomerMapper;
 import com.demo.customers.service.DbService;
+import com.demo.customers.validator.CustomerValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,9 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/v1")
 public class CustomerController {
+
+    @Autowired
+    CustomerValidator validator;
 
     @Autowired
     DbService service;
@@ -33,8 +37,9 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/customers", consumes = APPLICATION_JSON_VALUE)
     public void createCustomer(@RequestBody CustomerDto customerDto) {
-        service.saveCustomer(customerMapper.mapToCustomer(customerDto));
-
+        if(validator.validateCustomer(customerMapper.mapToCustomer(customerDto))) {
+            service.saveCustomer(customerMapper.mapToCustomer(customerDto));
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/customers")
@@ -42,7 +47,7 @@ public class CustomerController {
         return customerMapper.mapToCustomerDto(service.saveCustomer(customerMapper.mapToCustomer(customerDto)));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/cus/{taskId}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/customers/{taskId}")
     public void deleteCustomer(@PathVariable Long taskId) {
         service.deleteCustomer(taskId);
     }
