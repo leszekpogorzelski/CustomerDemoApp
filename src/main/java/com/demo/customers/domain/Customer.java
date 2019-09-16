@@ -40,24 +40,29 @@ public class Customer {
     private String lastName;
 
     @NotNull
-    @Pattern(regexp = ".+@.+\\..+[a-z]+")
+    @Pattern(regexp = ".+@.+\\..[a-z]+")
     @Email
     @Column(name = "EMAIL")
     private String email;
 
     @NotNull
-    @Column(name = "ADDRESS")
-    private String address;
+    @Pattern(regexp ="([A-Z][a-z]+)|([A-Z][a-z]+\\ [A-Z][a-z]+)")
+    @Column(name = "STREET")
+    private String street;
 
-/*    @NotNull
+    @NotNull
+    @Pattern(regexp ="([0-9]+)|([0-9]+[A-Z])|([0-9]+\\/[0-9]+)|([0-9]+[A-Z]\\/[0-9]+[a-z])" +
+            "|([0-9]+\\/[0-9]+[a-z])|([0-9]+[A-Z]\\/[0-9]+)")
     @Column(name = "HOME_NUMBER")
-    private String flat;
+    private String homeNumber;
 
     @NotNull
+    @Pattern(regexp ="\\d{2}\\-\\d{3}")
     @Column(name = "POSTAL_CODE")
-    private String code;
+    private String postalCode;
 
     @NotNull
+    @Pattern(regexp ="([A-Z][a-z]+)|([A-Z][a-z]+\\-[A-Z][a-z]+)")
     @Column(name = "CITY")
-    private String city;*/
+    private String city;
 }

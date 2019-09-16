@@ -1,11 +1,11 @@
 package com.demo.customers.mapper;
 
-        import com.demo.customers.domain.Customer;
-        import com.demo.customers.domain.CustomerDto;
-        import org.springframework.stereotype.Component;
+import com.demo.customers.domain.Customer;
+import com.demo.customers.domain.CustomerDto;
+import org.springframework.stereotype.Component;
 
-        import java.util.List;
-        import java.util.stream.Collectors;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CustomerMapper {
@@ -18,11 +18,10 @@ public class CustomerMapper {
                 customerDto.getFirstName(),
                 customerDto.getLastName(),
                 customerDto.getEmail(),
-                customerDto.getAddress());
-              /*  customerDto.getHomeNumber(),
-                customerDto.getPostal(),
-                customerDto.getCity());*/
-
+                customerDto.getStreet(),
+                customerDto.getHomeNumber(),
+                customerDto.getPostalCode(),
+                customerDto.getCity());
     }
 
     public CustomerDto mapToCustomerDto(final Customer customer) {
@@ -32,17 +31,17 @@ public class CustomerMapper {
                 customer.getFirstName(),
                 customer.getLastName(),
                 customer.getEmail(),
-                customer.getAddress());
-              /*  customer.getHomeNumber(),
+                customer.getStreet(),
+                customer.getHomeNumber(),
                 customer.getPostalCode(),
-                customer.getCity());*/
+                customer.getCity());
     }
 
     public List<CustomerDto> mapToCustomerDtoList(final List<Customer> customerList) {
         return customerList.stream()
                 .map(t -> new CustomerDto(t.getId(), t.getPersonalIdNumber(), t.getFirstName(),
-                        t.getLastName(), t.getEmail(), t.getAddress()))
-                //t.getHomeNumber(), t.getPostalCode(), t.getCity()))
+                        t.getLastName(), t.getEmail(), t.getStreet(), t.getHomeNumber(),
+                        t.getPostalCode(), t.getCity()))
                 .collect(Collectors.toList());
     }
 }

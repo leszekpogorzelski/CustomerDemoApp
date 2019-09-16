@@ -17,13 +17,13 @@ public class CustomerValidator {
 
     public boolean validateCustomer(Customer customer) {
         boolean validation = false;
-        String idNumberCheck = customer.getPersonalIdNumber();
+        String idNumber = customer.getPersonalIdNumber();
         List<Customer> dbCustomersList = service.getAllCustomers();
         if(dbCustomersList.size() == 0) {
             validation = true;
         } else {
             for (Customer dbCustomer : dbCustomersList) {
-                if (dbCustomer.getPersonalIdNumber().equals(idNumberCheck)) {
+                if (dbCustomer.getPersonalIdNumber().equals(idNumber)) {
                     validation = false;
                 } else {
                     validation = true;
