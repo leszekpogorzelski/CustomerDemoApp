@@ -18,10 +18,10 @@ public class CustomerMapper {
                 customerDto.getFirstName(),
                 customerDto.getLastName(),
                 customerDto.getEmail(),
-                customerDto.getStreet(),
-                customerDto.getHomeNumber(),
+                customerDto.getAddress());
+              /*  customerDto.getHomeNumber(),
                 customerDto.getPostal(),
-                customerDto.getCity());
+                customerDto.getCity());*/
 
     }
 
@@ -32,16 +32,17 @@ public class CustomerMapper {
                 customer.getFirstName(),
                 customer.getLastName(),
                 customer.getEmail(),
-                customer.getStreet(),
-                customer.getHomeNumber(),
-                customer.getPostal(),
-                customer.getCity());
+                customer.getAddress());
+              /*  customer.getHomeNumber(),
+                customer.getPostalCode(),
+                customer.getCity());*/
     }
 
     public List<CustomerDto> mapToCustomerDtoList(final List<Customer> customerList) {
         return customerList.stream()
                 .map(t -> new CustomerDto(t.getId(), t.getPersonalIdNumber(), t.getFirstName(),
-                        t.getLastName(), t.getEmail(), t.getStreet(), t.getHomeNumber(), t.getPostal(), t.getCity()))
+                        t.getLastName(), t.getEmail(), t.getAddress()))
+                //t.getHomeNumber(), t.getPostalCode(), t.getCity()))
                 .collect(Collectors.toList());
     }
 }
