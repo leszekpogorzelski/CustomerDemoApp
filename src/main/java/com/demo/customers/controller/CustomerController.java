@@ -37,26 +37,25 @@ public class CustomerController {
         return customerMapper.mapToCustomerDto(service.getCustomer(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer not found")));
     }
-
     @RequestMapping(method = RequestMethod.POST, value = "/customers", consumes = APPLICATION_JSON_VALUE)
     public void createCustomer(@RequestBody CustomerDto customerDto) throws CustomerAlreadyExists, WrongDataInput {
         if (validator.validateCustomer(customerMapper.mapToCustomer(customerDto))) {
-           try {
-               service.saveCustomer(customerMapper.mapToCustomer(customerDto));
-           } catch (Exception e) {
-               throw new WrongDataInput("Wrong data format!\n" +
-               "Correct example format:\n" +
-                       "{\n" +
-                       "  \"city\": \"Warszawa || Kedzierzyn-Kozle\",\n" +
-                       "  \"email\": \"jan@kowalski.pl\",\n" +
-                       "  \"firstName\": \"Jan\",\n" +
-                       "  \"homeNumber\": \"15 || 15A || 15A/1a\",\n" +
-                       "  \"lastName\": \"Kowalski\",\n" +
-                       "  \"personalIdNumber\": \"12345678901\",\n" +
-                       "  \"postalCode\": \"03-303\",\n" +
-                       "  \"street\": \"Kwiatowa || Kubusia Puchatka\"\n" +
-                       "}");
-           }
+            try {
+                service.saveCustomer(customerMapper.mapToCustomer(customerDto));
+            } catch (Exception e) {
+                throw new WrongDataInput("Wrong data format!\n" +
+                        "Correct example format:\n" +
+                        "{\n" +
+                        "  \"city\": \"Warszawa || Kedzierzyn-Kozle\",\n" +
+                        "  \"email\": \"jan@kowalski.pl\",\n" +
+                        "  \"firstName\": \"Jan\",\n" +
+                        "  \"homeNumber\": \"15 || 15A || 15A/1a\",\n" +
+                        "  \"lastName\": \"Kowalski\",\n" +
+                        "  \"personalIdNumber\": \"12345678901\",\n" +
+                        "  \"postalCode\": \"03-303\",\n" +
+                        "  \"street\": \"Kwiatowa || Kubusia Puchatka\"\n" +
+                        "}");
+            }
         }
     }
 
@@ -88,7 +87,6 @@ public class CustomerController {
             throw new CustomerNotFoundException("Customer not found in DataBase!");
         }
     }
-
 }
 
 
